@@ -19,7 +19,7 @@
       </div>
 
     <div class="search-card">
-        <h3 class="card-header text-uppercase">Search Location</h3>
+        <h3 class="card-header text-uppercasecol-12 col-md-3 ">Search Location</h3>
         <form id="user-form" class="card-body">
           <label class="form-label" for="username"></label>
           <input type="text" class='inputValue' placeholder= 'Enter a Location'/>
@@ -29,54 +29,82 @@
 
       <div class="history-cont card row col aligh-self-start" style="width: 18rem;">
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">An item</li>
-          <li class="list-group-item">A second item</li>
-          <li class="list-group-item">A third item</li>
+          <li class="list-group-item">history</li>
+          <li class="list-group-item">history</li>
+          <li class="list-group-item">history</li>
         </ul>
       </div>
 
-    <div class= "-day-cards row">
-   
+      <div class= "current-weather row container-fluid">
+        <div class="row">
+          <div class="card" style="width: 18rem;">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item liveCity">location</li>
+            <li class="list-group-item liveTemp">temp</li>
+            <li class="list-group-item wind">wind</li>
+            <li class="list-group-item humd">humidity</li>
+            <li class="list-group-item UVI">UV Index</li>
+          </ul>
+        </div>
+
+    <div class= "Five-day-cards row container-fluid">
+      <div class="row">
         <div class="card" style="width: 18rem;">
         <ul class="list-group list-group-flush">
-          <li class="list-group-item location">location</li>
+          <li class="list-group-item fdDate">date</li>
+          <li class="list-group-item fdIcon">icon</li>
+          <li class="list-group-item fdTemp">temp</li>
+          <li class="list-group-item fdWind">wind</li>
+          <li class="list-group-item humd">humidity</li>
+        </ul>
+      </div>
+
+      <div class="row">
+        <div class="card" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item temp">date</li>
+          <li class="list-group-item temp">icon</li>
           <li class="list-group-item temp">temp</li>
           <li class="list-group-item wind">wind</li>
           <li class="list-group-item humd">humidity</li>
-          <li class="list-group-item UVI">UV Index</li>
         </ul>
       </div>
 
-      <div class="card" style="width: 18rem;">
+      <div class="row">
+        <div class="card" style="width: 18rem;">
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">An item</li>
-          <li class="list-group-item">A second item</li>
-          <li class="list-group-item">A third item</li>
+          <li class="list-group-item temp">date</li>
+          <li class="list-group-item temp">icon</li>
+          <li class="list-group-item temp">temp</li>
+          <li class="list-group-item wind">wind</li>
+          <li class="list-group-item humd">humidity</li>
         </ul>
       </div>
 
-      <div class="card" style="width: 18rem;">
+      <div class="row">
+        <div class="card" style="width: 18rem;">
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">An item</li>
-          <li class="list-group-item">A second item</li>
-          <li class="list-group-item">A third item</li>
+          <li class="list-group-item temp">date</li>
+          <li class="list-group-item temp">icon</li>
+          <li class="list-group-item temp">temp</li>
+          <li class="list-group-item wind">wind</li>
+          <li class="list-group-item humd">humidity</li>
         </ul>
       </div>
 
-      <div class="card" style="width: 18rem;">
+      <div class="row">
+        <div class="card" style="width: 18rem;">
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">An item</li>
-          <li class="list-group-item">A second item</li>
-          <li class="list-group-item">A third item</li>
-        </ul>
-      </div>
-      <div class="card" style="width: 18rem;">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">An item</li>
-          <li class="list-group-item">A second item</li>
-          <li class="list-group-item">A third item</li>
+          <li class="list-group-item temp">date</li>
+          <li class="list-group-item temp">icon</li>
+          <li class="list-group-item temp">temp</li>
+          <li class="list-group-item wind">wind</li>
+          <li class="list-group-item humd">humidity</li>
         </ul>
       </div>
       </div>
+      </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <script src="./assets/script.js"></script>
 </body>
 </html>
