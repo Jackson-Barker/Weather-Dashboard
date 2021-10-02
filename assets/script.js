@@ -8,6 +8,8 @@ var humidity = document.querySelector('.humd')
 var UVI = document.querySelector('.UVI')
 var formBtn = document.querySelector('#user-form')
 
+var fdDate0 = document.querySelector('.fdDate0')
+var fdDate1 = document.querySelector('.fdDate1')
 
 
 formBtn.addEventListener('submit', function(event){
@@ -39,7 +41,9 @@ formBtn.addEventListener('submit', function(event){
            //i+=8 => i =i +8
            for(var i=2; i < fiveDayData.list.length; i+=8){
                console.log(fiveDayData.list[i])
-               
+               fdDate0.innerHTML=fiveDayData.list[2].dt_txt
+               fdDate1.innerHTML=fiveDayData.list[10].dt_txt
+            //    console.log(fiveDayData.list[i].dt_txt)
            }
        })
     })
