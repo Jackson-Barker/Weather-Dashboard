@@ -52,10 +52,11 @@ h3 {
 }
 
 @media screen and (max-width: 769px) {
-    .main-container, .weather-container, .Five-day-cards, .current-weather {
+    .main-container, .weather-container, .Five-day-cards, .current-weather, body {
       flex-direction: column;
       text-align: center;
       display: block;
       margin-left: 0rem;
+      align-items: center;
     }
   }
