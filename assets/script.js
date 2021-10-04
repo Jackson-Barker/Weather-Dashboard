@@ -1,5 +1,6 @@
 var formBtn = document.querySelector('#user-form')
- var inputValue = document.querySelector('.inputValue')
+var inputValue = document.querySelector('.inputValue')
+var history1 = document.querySelector('history1')
 
 var liveCity = document.querySelector('.liveCity')
 var liveTemp = document.querySelector('.liveTemp')
@@ -50,22 +51,22 @@ formBtn.addEventListener('submit', function(event){
     .then(data =>{
         
         console.log(data)
-         var iconcode = data.weather[0].icon
+        var iconcode = data.weather[0].icon
         var icon = "http://openweathermap.org/img/w/" + iconcode + ".png";
        liveCity.innerHTML=data.name+moment(data.dt,'X').format(' (MM/DD/YYYY)') +"<img src='"+icon+"'/>"
-       liveTemp.innerHTML=data.main.temp
-       wind.innerHTML=data.wind.speed
-       humidity.innerHTML=data.main.humidity
+       liveTemp.innerHTML=data.main.temp+'°F'
+       wind.innerHTML='Wind speed '+data.wind.speed+' mph'
+       humidity.innerHTML=data.main.humidity+'% Humidity'
 
        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&appid=5dd43b2f8000174a00ba86cc1fc2e731`)
        .then(response => response.json())
        .then(UVData => {
            console.log(UVData)
-           UVI.innerHTML=UVData.current.uvi
+           UVI.innerHTML='UV index: '+UVData.current.uvi
        })
 
 
-       fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${data.name}&units=imperial&appid=5dd43b2f8000174a00ba86cc1fc2e731`)
+     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${data.name}&units=imperial&appid=5dd43b2f8000174a00ba86cc1fc2e731`)
        .then(response => response.json())
        .then(fiveDayData => {
         // console.log(fiveDayData)
@@ -81,43 +82,47 @@ formBtn.addEventListener('submit', function(event){
                fdDate4.innerHTML=fiveDayData.list[34].dt_txt
 
             //    display temp
-               fdTemp0.innerHTML=fiveDayData.list[2].main.temp
-               fdTemp1.innerHTML=fiveDayData.list[10].main.temp
-               fdTemp2.innerHTML=fiveDayData.list[18].main.temp
-               fdTemp3.innerHTML=fiveDayData.list[26].main.temp
-               fdTemp4.innerHTML=fiveDayData.list[34].main.temp
+               fdTemp0.innerHTML=fiveDayData.list[2].main.temp+'°F'
+               fdTemp1.innerHTML=fiveDayData.list[10].main.temp+'°F'
+               fdTemp2.innerHTML=fiveDayData.list[18].main.temp+'°F'
+               fdTemp3.innerHTML=fiveDayData.list[26].main.temp+'°F'
+               fdTemp4.innerHTML=fiveDayData.list[34].main.temp+'°F'
 
             //     display wind
-               fdWind0.innerHTML=fiveDayData.list[2].wind.speed
-               fdWind1.innerHTML=fiveDayData.list[10].wind.speed
-               fdWind2.innerHTML=fiveDayData.list[18].wind.speed
-               fdWind3.innerHTML=fiveDayData.list[26].wind.speed
-               fdWind4.innerHTML=fiveDayData.list[34].wind.speed
+               fdWind0.innerHTML='Wind speed '+fiveDayData.list[2].wind.speed+' mph'
+               fdWind1.innerHTML='Wind speed '+fiveDayData.list[10].wind.speed+' mph'
+               fdWind2.innerHTML='Wind speed '+fiveDayData.list[18].wind.speed+' mph'
+               fdWind3.innerHTML='Wind speed '+fiveDayData.list[26].wind.speed+' mph'
+               fdWind4.innerHTML='Wind speed '+fiveDayData.list[34].wind.speed+' mph'
 
             //    display humidity
-               fdHumd0.innerHTML=fiveDayData.list[2].main.humidity
-               fdHumd1.innerHTML=fiveDayData.list[10].main.humidity
-               fdHumd2.innerHTML=fiveDayData.list[18].main.humidity
-               fdHumd3.innerHTML=fiveDayData.list[26].main.humidity
-               fdHumd4.innerHTML=fiveDayData.list[34].main.humidity
+               fdHumd0.innerHTML=fiveDayData.list[2].main.humidity+'% Humidity'
+               fdHumd1.innerHTML=fiveDayData.list[10].main.humidity+'% Humidity'
+               fdHumd2.innerHTML=fiveDayData.list[18].main.humidity+'% Humidity'
+               fdHumd3.innerHTML=fiveDayData.list[26].main.humidity+'% Humidity'
+               fdHumd4.innerHTML=fiveDayData.list[34].main.humidity+'% Humidity'
 
 
             // display icon
-               var fdiconcode = fiveDayData.list[i].weather[0].icon
+          var fdiconcode = fiveDayData.list[i].weather[0].icon
         var fdicon = "http://openweathermap.org/img/w/" + fdiconcode + ".png"
 
-               fdIcon0.innerHTML=fiveDayData.list[2].weather[0]+"<img src='"+fdicon+"'/>"
-               fdIcon1.innerHTML=fiveDayData.list[10].weather[0]+"<img src='"+fdicon+"'/>"
-               fdIcon2.innerHTML=fiveDayData.list[18].weather[0]+"<img src='"+fdicon+"'/>"
-               fdIcon3.innerHTML=fiveDayData.list[26].weather[0]+"<img src='"+fdicon+"'/>"
-               fdIcon4.innerHTML=fiveDayData.list[34].weather[0]+"<img src='"+fdicon+"'/>"
+               fdIcon0.innerHTML=fiveDayData.list[2].weather[0].icon+"<img src='"+fdicon+"'/>"
+               fdIcon1.innerHTML=fiveDayData.list[10].weather[0].icon+"<img src='"+fdicon+"'/>"
+               fdIcon2.innerHTML=fiveDayData.list[18].weather[0].icon+"<img src='"+fdicon+"'/>"
+               fdIcon3.innerHTML=fiveDayData.list[26].weather[0].icon+"<img src='"+fdicon+"'/>"
+               fdIcon4.innerHTML=fiveDayData.list[34].weather[0].icon+"<img src='"+fdicon+"'/>"
 
                
             //    console.log(fiveDayData.list[i].dt_txt)
+          
+            
            }
-       })
+         })
     })
 
     .catch(err => alert("City not found"))
 })
+
+
 

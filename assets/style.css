@@ -11,5 +11,51 @@ body {
 background-color: darkgray;
 }
 
+.main-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.weather-container {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+}
+
+h3 {
+    margin-left: 2rem
+}
 
 
+.Five-day-cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-basis: 100%;
+    gap: 3rem;
+    margin-top: 5rem;
+    align-content: center;
+    padding-bottom: 2rem;
+}
+
+.list-group-item {
+    display: flex;
+    flex-basis: 100%;
+}
+
+.current-weather {
+    margin-left: 10rem;
+}
+
+.list-group-item {
+    background-color: cadetblue;
+}
+
+@media screen and (max-width: 769px) {
+    .main-container, .weather-container, .Five-day-cards, .current-weather {
+      flex-direction: column;
+      text-align: center;
+      display: block;
+      margin-left: 0rem;
+    }
+  }
