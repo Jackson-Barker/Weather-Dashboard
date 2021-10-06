@@ -3,7 +3,9 @@ var inputValue = document.querySelector('.inputValue')
 
 var cities =[]
 
-var history1 = document.getElementById('.history1')
+var history1 = document.querySelector('.history1')
+var history2 = document.querySelector('.history2')
+var history3 = document.querySelector('.history3')
 
 var liveCity = document.querySelector('.liveCity')
 var liveTemp = document.querySelector('.liveTemp')
@@ -114,8 +116,6 @@ formBtn.addEventListener('submit', function(event){
             fdIcon2.innerHTML=fiveDayData.list[18].weather[0].icon+"<img src='"+fdicon+"'/>"
             fdIcon3.innerHTML=fiveDayData.list[26].weather[0].icon+"<img src='"+fdicon+"'/>"
             fdIcon4.innerHTML=fiveDayData.list[34].weather[0].icon+"<img src='"+fdicon+"'/>"
-
-            //    console.log(fiveDayData.list[i].dt_txt)
             }
         })
     })
@@ -124,9 +124,14 @@ formBtn.addEventListener('submit', function(event){
     
     cities.push(inputValue.value)
     localStorage.setItem("Cities", JSON.stringify(cities));
-    updateHistory()
-    // history1.innerHTML=localStorage.getItem("Cities",[0])
+    var returnedCities = localStorage.getItem("Cities")
+    var cities2 = JSON.parse(returnedCities)
+    var cities3 = cities2.reverse()
 
+    history3.innerHTML=history2.innerHTML
+    history2.innerHTML=history1.innerHTML
+    history1.innerHTML=cities3[0]
+    
 })
 
 
