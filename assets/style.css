@@ -46,6 +46,9 @@ h3 {
 .current-weather {
     margin-left: 10rem;
 }
+.current-weather-card {
+    font-weight: bolder;
+}
 
 .list-group-item {
     background-color: cadetblue;

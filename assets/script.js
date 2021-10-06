@@ -1,6 +1,9 @@
 var formBtn = document.querySelector('#user-form')
 var inputValue = document.querySelector('.inputValue')
-var history1 = document.querySelector('history1')
+
+var cities =[]
+
+var history1 = document.getElementById('.history1')
 
 var liveCity = document.querySelector('.liveCity')
 var liveTemp = document.querySelector('.liveTemp')
@@ -65,8 +68,7 @@ formBtn.addEventListener('submit', function(event){
              UVI.innerHTML='UV index: '+UVData.current.uvi
         })
 
-
-fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${data.name}&units=imperial&appid=5dd43b2f8000174a00ba86cc1fc2e731`)
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${data.name}&units=imperial&appid=5dd43b2f8000174a00ba86cc1fc2e731`)
     .then(response => response.json())
     .then(fiveDayData => {
         // console.log(fiveDayData)
@@ -105,8 +107,8 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${data.name}&units=imp
 
             // display icon
         var fdiconcode = fiveDayData.list[i].weather[0].icon
-        var fdicon = "http://openweathermap.org/img/w/" + fdiconcode + ".png"
-
+        var fdicon = "http://openweathermap.org/img/wn/" + fdiconcode + "@2x.png";
+        
             fdIcon0.innerHTML=fiveDayData.list[2].weather[0].icon+"<img src='"+fdicon+"'/>"
             fdIcon1.innerHTML=fiveDayData.list[10].weather[0].icon+"<img src='"+fdicon+"'/>"
             fdIcon2.innerHTML=fiveDayData.list[18].weather[0].icon+"<img src='"+fdicon+"'/>"
@@ -119,7 +121,20 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${data.name}&units=imp
     })
 
     .catch(err => alert("City not found"))
+    
+    cities.push(inputValue.value)
+    localStorage.setItem("Cities", JSON.stringify(cities));
+    updateHistory()
+    // history1.innerHTML=localStorage.getItem("Cities",[0])
+
 })
+
+
+
+
+
+
+
 
 
 
