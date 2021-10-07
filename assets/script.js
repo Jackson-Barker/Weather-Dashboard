@@ -82,7 +82,7 @@ formBtn.addEventListener('submit', function(event){
         // console.log(fiveDayData)
            //i+=8 => i =i +8 to display ever 24 hours
         for(var i=2; i < fiveDayData.list.length; i+=8){
-            console.log(fiveDayData.list[i])
+          
 
             //display date
             fdDate0.innerHTML=fiveDayData.list[2].dt_txt
