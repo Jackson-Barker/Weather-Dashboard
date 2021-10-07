@@ -113,7 +113,7 @@ formBtn.addEventListener('submit', function(event){
             fdHumd4.innerHTML=fiveDayData.list[34].main.humidity+'% Humidity'
 
 
-            // display icon
+            // display icons
             fdIcon0.innerHTML=`<img src="http://openweathermap.org/img/wn/${fiveDayData.list[2].weather[0].icon}@2x.png"/>`
             fdIcon1.innerHTML=`<img src="http://openweathermap.org/img/wn/${fiveDayData.list[10].weather[0].icon}@2x.png"/>`
             fdIcon2.innerHTML=`<img src="http://openweathermap.org/img/wn/${fiveDayData.list[18].weather[0].icon}@2x.png"/>`
