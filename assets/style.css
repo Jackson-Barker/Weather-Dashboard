@@ -7,6 +7,11 @@
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
+
+.jumbotron {
+    width: auto;
+}
+
 .btn {
 background-color: darkgray;
 }
@@ -14,6 +19,10 @@ background-color: darkgray;
 .main-container {
     display: flex;
     flex-direction: row;
+}
+
+.history-card {
+    margin-left: 20px;
 }
 
 .weather-container {
@@ -54,6 +63,7 @@ h3 {
     background-color: cadetblue;
 }
 
+
 @media screen and (max-width: 769px) {
     .main-container, .weather-container, .Five-day-cards, .current-weather, body {
       flex-direction: column;
@@ -63,3 +73,7 @@ h3 {
       align-items: center;
     }
   }
+
+
+
+

@@ -1,12 +1,14 @@
+// search button
 var formBtn = document.querySelector('#user-form')
 var inputValue = document.querySelector('.inputValue')
 
+// search History 
 var cities =[]
-
 var history1 = document.querySelector('.history1')
 var history2 = document.querySelector('.history2')
 var history3 = document.querySelector('.history3')
 
+// current weather
 var liveCity = document.querySelector('.liveCity')
 var liveTemp = document.querySelector('.liveTemp')
 var wind = document.querySelector('.wind')
@@ -49,6 +51,7 @@ var fdHumd2 = document.querySelector('.fdHumd2')
 var fdHumd3 = document.querySelector('.fdHumd3')
 var fdHumd4 = document.querySelector('.fdHumd4')
 
+// button and fetch for current weather
 formBtn.addEventListener('submit', function(event){
     event.preventDefault();
     fetch("https://api.openweathermap.org/data/2.5/weather?q="+inputValue.value+"&units=imperial&appid=5dd43b2f8000174a00ba86cc1fc2e731")
@@ -56,6 +59,7 @@ formBtn.addEventListener('submit', function(event){
     .then(data =>{
         
         console.log(data)
+        // icon fetch, date conversion
         var iconcode = data.weather[0].icon
         var icon = "http://openweathermap.org/img/w/" + iconcode + ".png";
        liveCity.innerHTML=data.name+moment(data.dt,'X').format(' (MM/DD/YYYY)') +"<img src='"+icon+"'/>"
@@ -63,6 +67,7 @@ formBtn.addEventListener('submit', function(event){
        wind.innerHTML='Wind speed '+data.wind.speed+' mph'
        humidity.innerHTML=data.main.humidity+'% Humidity'
 
+    //    UV index fetch
        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&appid=5dd43b2f8000174a00ba86cc1fc2e731`)
        .then(response => response.json())
        .then(UVData => {
@@ -70,15 +75,16 @@ formBtn.addEventListener('submit', function(event){
              UVI.innerHTML='UV index: '+UVData.current.uvi
         })
 
+        // forecast fetch
     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${data.name}&units=imperial&appid=5dd43b2f8000174a00ba86cc1fc2e731`)
     .then(response => response.json())
     .then(fiveDayData => {
         // console.log(fiveDayData)
-           //i+=8 => i =i +8
+           //i+=8 => i =i +8 to display ever 24 hours
         for(var i=2; i < fiveDayData.list.length; i+=8){
             console.log(fiveDayData.list[i])
 
-            //    display date
+            //display date
             fdDate0.innerHTML=fiveDayData.list[2].dt_txt
             fdDate1.innerHTML=fiveDayData.list[10].dt_txt
             fdDate2.innerHTML=fiveDayData.list[18].dt_txt
@@ -92,14 +98,14 @@ formBtn.addEventListener('submit', function(event){
             fdTemp3.innerHTML=fiveDayData.list[26].main.temp+'°F'
             fdTemp4.innerHTML=fiveDayData.list[34].main.temp+'°F'
 
-            //     display wind
+            //display wind
             fdWind0.innerHTML='Wind speed '+fiveDayData.list[2].wind.speed+' mph'
             fdWind1.innerHTML='Wind speed '+fiveDayData.list[10].wind.speed+' mph'
             fdWind2.innerHTML='Wind speed '+fiveDayData.list[18].wind.speed+' mph'
             fdWind3.innerHTML='Wind speed '+fiveDayData.list[26].wind.speed+' mph'
             fdWind4.innerHTML='Wind speed '+fiveDayData.list[34].wind.speed+' mph'
 
-            //    display humidity
+            //display humidity
             fdHumd0.innerHTML=fiveDayData.list[2].main.humidity+'% Humidity'
             fdHumd1.innerHTML=fiveDayData.list[10].main.humidity+'% Humidity'
             fdHumd2.innerHTML=fiveDayData.list[18].main.humidity+'% Humidity'
@@ -108,20 +114,18 @@ formBtn.addEventListener('submit', function(event){
 
 
             // display icon
-        var fdiconcode = fiveDayData.list[i].weather[0].icon
-        var fdicon = "http://openweathermap.org/img/wn/" + fdiconcode + "@2x.png";
-        
-            fdIcon0.innerHTML=fiveDayData.list[2].weather[0].icon+"<img src='"+fdicon+"'/>"
-            fdIcon1.innerHTML=fiveDayData.list[10].weather[0].icon+"<img src='"+fdicon+"'/>"
-            fdIcon2.innerHTML=fiveDayData.list[18].weather[0].icon+"<img src='"+fdicon+"'/>"
-            fdIcon3.innerHTML=fiveDayData.list[26].weather[0].icon+"<img src='"+fdicon+"'/>"
-            fdIcon4.innerHTML=fiveDayData.list[34].weather[0].icon+"<img src='"+fdicon+"'/>"
+            fdIcon0.innerHTML=`<img src="http://openweathermap.org/img/wn/${fiveDayData.list[2].weather[0].icon}@2x.png"/>`
+            fdIcon1.innerHTML=`<img src="http://openweathermap.org/img/wn/${fiveDayData.list[10].weather[0].icon}@2x.png"/>`
+            fdIcon2.innerHTML=`<img src="http://openweathermap.org/img/wn/${fiveDayData.list[18].weather[0].icon}@2x.png"/>`
+            fdIcon3.innerHTML=`<img src="http://openweathermap.org/img/wn/${fiveDayData.list[26].weather[0].icon}@2x.png"/>`
+            fdIcon4.innerHTML=`<img src="http://openweathermap.org/img/wn/${fiveDayData.list[34].weather[0].icon}@2x.png"/>`
             }
         })
     })
-
+    // city not found error
     .catch(err => alert("City not found"))
     
+    // search history
     cities.push(inputValue.value)
     localStorage.setItem("Cities", JSON.stringify(cities));
     var returnedCities = localStorage.getItem("Cities")
@@ -131,7 +135,7 @@ formBtn.addEventListener('submit', function(event){
     history3.innerHTML=history2.innerHTML
     history2.innerHTML=history1.innerHTML
     history1.innerHTML=cities3[0]
-    
+
 })
 
 
